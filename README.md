@@ -7,6 +7,29 @@
   3、A收到已读回执以后，立刻删除自身的消息。
   4、B用户在倒计时结束的时候再删除 消息。 
 ```
+- 类文件解释
+```
+LYTSDKDataBase+LYTDelayDelete.h
+负责加入阅后即焚消息后的本地存储功能。
+LYTDelayDeleteTools.h
+负责管理阅后即焚消息的计时器、删除的事件通知
+```
+- 加入阅后即焚的消息到阅后即焚消息管理器
+```
+/**
+加入 阅后即焚的消息 到计时器
+@param message 阅后即焚消息对象
+*/
+- (void)addDelayMessage:(LYTMessage*)message succeed:(void (^)(BOOL))block;
+```
+- 查询阅后即焚消息,最新的计时时间
+```
+/**
+根据查询当前 阅后即焚消息,最新的计时时间
+@param message 阅后即焚消息对象
+*/
+- (NSInteger)quaryDelayTimeForMessage:(LYTMessage *)message;
+```
 - 阅后即焚消息刷新时间的监听
 ```
 /**
